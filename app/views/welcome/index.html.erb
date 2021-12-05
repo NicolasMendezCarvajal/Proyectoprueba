@@ -1,0 +1,56 @@
+<h1>Prueba de balance de paréntesis</h1>
+<%h= @txt="(HOLA)(:)(((()" %>
+<%= form_for(@txt) do |f| %>
+  <div class="field">
+    <%= f.text_field:body, placeholder:"Ingrese el texto a evaluar"%>
+  </div>
+  <div class="field">
+    <%= f.submit "Ingresar"%>
+  </div>
+  <%h=@txt.inspect%>
+  <%=h %>
+<%end%>
+<%
+  z=0
+  if h==nil
+    nombre=""
+  else
+    nombre=h
+  end
+  letra=nombre.split ("")
+  %>
+<%= nombre  %>
+<%
+  c=letra.count
+  puts(c)
+
+  a=letra.select{|x|x=="("}
+  d=a.count
+
+  b=letra.select{|x|x==")"}
+  e=b.count
+
+  f=e-d
+  if e==d
+    %>
+    <%= "Balanceado"  %>
+  <%
+  elsif e!=d
+    while c>0
+      if letra[c]==":" and letra[c+1]=="("
+        z=z+1
+      elsif letra[c]==":" and letra[c+1]==")"
+        z=z+1
+      end
+      c-= 1
+    end
+    if  z==f.abs
+  %>
+    <%= "Balanceado"  %>
+  <%
+    else
+  %>
+    <%= "No Balanceado"  %>
+  <%
+    end
+  end %>
